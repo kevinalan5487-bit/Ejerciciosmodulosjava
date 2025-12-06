@@ -1,0 +1,45 @@
+public class ArticuloBibliografico {
+
+    // Atributos
+    private String idUnico;
+    private String autor;
+    private boolean disponible;   // true = disponible, false = prestado
+    private int anioPublicacion;
+
+    // Constructor
+    public ArticuloBibliografico(String idUnico, String autor, int anioPublicacion) {
+        this.idUnico = idUnico;
+        this.autor = autor;
+        this.anioPublicacion = anioPublicacion;
+        this.disponible = true;   // por defecto siempre disponible
+    }
+
+    // Método que simula la reserva del libro
+    public void reservar() {
+        if (disponible) {
+            disponible = false;
+            System.out.println("El artículo ha sido reservado correctamente.");
+        } else {
+            System.out.println("El artículo no está disponible para reserva.");
+        }
+    }
+
+    // Método que determina si el artículo es apto para préstamo (más de 5 años)
+    public boolean esAptoParaPrestamo(int anioActual) {
+        int antiguedad = anioActual - this.anioPublicacion;
+        return antiguedad > 5;
+    }
+
+    // Método para mostrar información general
+    public void mostrarInfo() {
+        System.out.println("ID: " + idUnico);
+        System.out.println("Autor: " + autor);
+        System.out.println("Año de publicación: " + anioPublicacion);
+        System.out.println("Disponible: " + (disponible ? "Sí" : "No"));
+    }
+
+    // Getters opcionales
+    public boolean isDisponible() {
+        return disponible;
+    }
+}
